@@ -43,6 +43,9 @@ def pregunta_02():
 
 
 def pregunta_03():
+    
+    respuesta = tbl0.groupby('_c1')['_c1'].count()
+    
     """
     ¿Cuál es la cantidad de registros por cada letra de la columna _c1 del archivo
     `tbl0.tsv`?
@@ -56,10 +59,13 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    return respuesta
 
 
 def pregunta_04():
+    
+    respuesta = tbl0.groupby('_c1')['_c2'].mean()
+    
     """
     Calcule el promedio de _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
 
@@ -71,10 +77,13 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
+    return respuesta
 
 
 def pregunta_05():
+    
+    respuesta = tbl0.groupby('_c1')['_c2'].max()
+    
     """
     Calcule el valor máximo de _c2 por cada letra en la columna _c1 del archivo
     `tbl0.tsv`.
@@ -88,10 +97,15 @@ def pregunta_05():
     E    9
     Name: _c2, dtype: int64
     """
-    return
+    return respuesta
 
 
 def pregunta_06():
+    
+    respuesta = list(tbl1['_c4'].unique())
+    respuesta = [row.upper() for row in respuesta]
+    respuesta.sort(reverse = False)
+    
     """
     Retorne una lista con los valores unicos de la columna _c4 de del archivo `tbl1.csv`
     en mayusculas y ordenados alfabéticamente.
@@ -100,10 +114,13 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    return respuesta
 
 
 def pregunta_07():
+    
+    respuesta = tbl0.groupby('_c1')['_c2'].sum()
+    
     """
     Calcule la suma de la _c2 por cada letra de la _c1 del archivo `tbl0.tsv`.
 
@@ -116,10 +133,14 @@ def pregunta_07():
     E    67
     Name: _c2, dtype: int64
     """
-    return
+    return respuesta
 
 
 def pregunta_08():
+    
+    respuesta = tbl0.copy()
+    respuesta ['suma'] = respuesta['_c0'] + respuesta['_c2']
+    
     """
     Agregue una columna llamada `suma` con la suma de _c0 y _c2 al archivo `tbl0.tsv`.
 
@@ -134,7 +155,7 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    return respuesta
 
 
 def pregunta_09():
