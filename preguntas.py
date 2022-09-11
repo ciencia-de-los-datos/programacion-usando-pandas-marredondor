@@ -209,6 +209,11 @@ def pregunta_10():
 
 
 def pregunta_11():
+    
+    respuesta = tbl1.copy()
+    respuesta = respuesta.groupby('_c0', as_index=False).sum()
+    respuesta ['_c4'] = [sorted(row) for row in respuesta ['_c4']]
+    respuesta['_c4'] = respuesta['_c4'].transform(lambda x: ','.join(x))
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
     la columna _c4 del archivo `tbl1.tsv`.
