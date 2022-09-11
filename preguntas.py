@@ -181,6 +181,15 @@ def pregunta_09():
 
 
 def pregunta_10():
+    
+    respuesta = tbl0.copy()
+    respuesta = respuesta[['_c1','_c2']]
+    respuesta['_c2'] = respuesta['_c2'].apply(str)
+    respuesta = respuesta.groupby('_c1', as_index=False).sum()
+    respuesta ['_c2'] = [sorted(row) for row in respuesta ['_c2']]
+    respuesta['_c2'] = respuesta['_c2'].transform(lambda x: ':'.join(x))
+    respuesta.rename(columns={"_c1": "_c0", "_c2": "_c1"}, inplace = True)
+    
     """
     Construya una tabla que contenga _c1 y una lista separada por ':' de los valores de
     la columna _c2 para el archivo `tbl0.tsv`.
@@ -213,7 +222,7 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    return respuesta
 
 
 def pregunta_12():
