@@ -189,7 +189,7 @@ def pregunta_10():
     respuesta ['_c2'] = [sorted(row) for row in respuesta ['_c2']]
     respuesta['_c2'] = respuesta['_c2'].transform(lambda x: ':'.join(x))
     respuesta.rename(columns={"_c1": "_c0", "_c2": "_c1"}, inplace = True)
-    respuesta = respuesta.set_index('_c0', append=True)
+    respuesta = respuesta.set_index('_c0')
 
     
     """
