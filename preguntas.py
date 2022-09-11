@@ -233,6 +233,16 @@ def pregunta_11():
 
 
 def pregunta_12():
+    
+    respuesta = tbl2.copy()
+    respuesta["_c5"] = respuesta["_c5a"] + ":" + respuesta["_c5b"].map(str)
+    respuesta = respuesta [['_c0', '_c5']]
+    respuesta = respuesta.groupby(['_c0'], as_index = False).agg({'_c5': ','.join})
+    respuesta['_c5'] = [row.split(",") for row in respuesta['_c5']]
+    respuesta['_c5'] = [sorted(row) for row in respuesta['_c5']]
+    respuesta['_c5'] = [",".join(row) for row in respuesta['_c5']]
+
+    
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
     la columna _c5a y _c5b (unidos por ':') de la tabla `tbl2.tsv`.
@@ -247,8 +257,7 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
-
+    return respuesta
 
 def pregunta_13():
     """
