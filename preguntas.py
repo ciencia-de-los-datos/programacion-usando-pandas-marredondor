@@ -159,6 +159,10 @@ def pregunta_08():
 
 
 def pregunta_09():
+    respuesta = tbl0.copy()
+    respuesta ['year'] = respuesta ['_c3'].str.split('-')
+    respuesta ['year'] = [row[0] for row in respuesta ['year']]
+        
     """
     Agregue el año como una columna al archivo `tbl0.tsv`.
 
@@ -190,7 +194,7 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    return respuesta
 
 
 def pregunta_11():
