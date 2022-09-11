@@ -264,6 +264,7 @@ def pregunta_13():
     respuesta = tbl0.merge(tbl2, how='inner', on='_c0')
     respuesta = respuesta[['_c1', '_c5b']]
     respuesta = respuesta.groupby('_c1').sum()
+    respuesta = respuesta['_c5b']
     """
     Si la columna _c0 es la clave en los archivos `tbl0.tsv` y `tbl2.tsv`, compute la
     suma de tbl2._c5b por cada valor en tbl0._c1.
