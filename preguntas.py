@@ -182,14 +182,11 @@ def pregunta_09():
 
 def pregunta_10():
     
-    respuesta = tbl0.copy()
-    respuesta = respuesta[['_c1','_c2']]
-    respuesta['_c2'] = respuesta['_c2'].apply(str)
-    respuesta = respuesta.groupby('_c1', as_index=False).sum()
-    respuesta ['_c2'] = [sorted(row) for row in respuesta ['_c2']]
-    respuesta['_c2'] = respuesta['_c2'].transform(lambda x: ':'.join(x))
-    respuesta = respuesta.set_index('_c2')
-
+    from functools import reduce
+    def sumar(series):
+        return reduce(lambda x, y: str(x) + ':' + str(y), series)
+    y = tbl0.sort_values('_c2')
+    respuesta = y.groupby('_c1').agg({'_c2': sumar})
     
     """
     Construya una tabla que contenga _c1 y una lista separada por ':' de los valores de
